@@ -122,6 +122,11 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
+// temporory home page---------------
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
+// ----------------------------------
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page not Found!"));
 });
@@ -130,6 +135,8 @@ app.use((err, req, res, next) => {
   let { statusCode = 500, message = "Something went Wrong" } = err;
   res.status(statusCode).render("error.ejs", { err });
 });
+
+// temporory home page
 
 app.listen(8080, () => {
   console.log("server is listening to port 8080");
