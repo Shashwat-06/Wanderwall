@@ -8,10 +8,12 @@
 </script>
 <body>
   <div class="row mt-3">
-    <div class="col-8 offset-3">
+    <div class="col-lg-6 offset-lg-3 col-sm-10 offset-sm-1">
       <h3><b> <%= listing.title %> </b></h3>
     </div>
-    <div class="card listing-card col-6 offset-3 show-card">
+    <div
+      class="card listing-card col-lg-6 offset-lg-3 show-card col-sm-10 offset-sm-1 col-xs-12"
+    >
       <img
         src="<%= listing.image.url %>"
         class="card-img-top show-img"
@@ -31,18 +33,22 @@
     <% if(currUser && listing.owner._id.equals(currUser._id)) { %>
     <div class="btns">
       <a
-        class="btn btn-dark col-2 offset-3 edit-btn"
+        class="btn btn-dark col-lg-2 offset-lg-3 col-md-2 offset-md-1 col-sm-3 offset-sm-1 col-8 offset-0 edit-btn"
         href="/listings/<%=listing._id%>/edit"
         >Edit</a
       >
 
       <form method="post" action="/listings/<%=listing._id%>?_method=DELETE">
-        <button class="btn btn-dark offset-5">Delete</button>
+        <button
+          class="btn btn-dark offset-lg-5 offset-md-2 offset-sm-3 offset-4"
+        >
+          Delete
+        </button>
       </form>
     </div>
     <% } %>
     <!-- review form -->
-    <div class="col-8 offset-3 mb-3">
+    <div class="col-lg-6 offset-lg-3 mb-3 col-sm-10 offset-sm-1">
       <% if(currUser && !listing.owner._id.equals(currUser._id)){%>
       <hr />
       <h4>Leave a Review</h4>
@@ -163,7 +169,8 @@
       </div>
       <% } %>
     </div>
-    <div class="col-8 offset-3 mb-3">
+    <!-- map -->
+    <div class="col-lg-6 offset-lg-3 mb-3 col-sm-10 offset-sm-1">
       <h3>Where you'll be</h3>
 
       <div id="map"></div>

@@ -20,7 +20,7 @@
             required
           />
           <div class="valid-feedback">Looks good!</div>
-          <div class="invalid-feedback">Title Looks good!</div>
+          <div class="invalid-feedback">Please Enter a Suitable Title</div>
         </div>
 
         <div class="mb-3">
@@ -36,7 +36,15 @@
 
         <div class="mb-3">
           <label for="image" class="form-label">Upload Listing Image</label>
-          <input type="file" name="listing[image]" class="form-control" />
+          <input
+            type="file"
+            name="listing[image]"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">
+            Please Upload a Nice Image of your Listing
+          </div>
         </div>
 
         <div class="row">
