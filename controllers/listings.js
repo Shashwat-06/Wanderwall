@@ -47,7 +47,10 @@ module.exports.showListings = async (req, res) => {
 module.exports.createListings = async (req, res, next) => {
   let nominatimAPI = `https://nominatim.openstreetmap.org/search?q=${req.body.listing.location},${req.body.listing.country}&format=jsonv2`;
   const data = await fetch(nominatimAPI);
-  const [geoData] = await data.json();
+  // const [geoData] = await data.json();
+  const raw = await data.text();
+  console.log("Raw response:", raw); // log the HTML that causes the crash
+  const geoData = JSON.parse(raw)[0]; // temporarily try to parse it yourself
 
   let response = { type: "Point", coordinates: [geoData.lon, geoData.lat] };
 
