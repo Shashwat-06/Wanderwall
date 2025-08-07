@@ -30,4 +30,4 @@ var circle = L.circle(reversedCords, {
     `<h4>${listing.title}</h4><p>Exact Location provided after booking</p>`
   );
 
-console.log(coordinates);
+// console.log(reversedCords);

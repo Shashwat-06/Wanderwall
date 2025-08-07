@@ -95,8 +95,16 @@ module.exports.updateListings = async (req, res) => {
   let listing = await Listing.findByIdAndUpdate(id, req.body.listing);
 
   let nominatimAPI = `https://nominatim.openstreetmap.org/search?q=${req.body.listing.location},${req.body.listing.country}&format=jsonv2`;
-  const data = await fetch(nominatimAPI);
-  const [geoData] = await data.json();
+  const data = await fetch(nominatimAPI, {
+    headers: {
+      "User-Agent": "WanderWall/1.0 (https://wanderwall-demo.render.com)",
+      Accept: "application/json",
+    },
+  });
+
+  const raw = await data.text();
+  console.log("Raw response:", raw.slice(0, 300));
+  const geoData = JSON.parse(raw)[0];
 
   let response = { type: "Point", coordinates: [geoData.lon, geoData.lat] };
 
