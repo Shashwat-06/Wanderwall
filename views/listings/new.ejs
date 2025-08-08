@@ -37,6 +37,7 @@
         <div class="mb-3">
           <label for="image" class="form-label">Upload Listing Image</label>
           <input
+            id="imageUpload"
             type="file"
             name="listing[image]"
             class="form-control"
@@ -92,4 +93,18 @@
       </form>
     </div>
   </div>
+  <script>
+    document
+      .getElementById("imageUpload")
+      .addEventListener("change", function (event) {
+        const maxSize = 2 * 1024 * 1024; // 2MB
+        const file = event.target.files[0];
+
+        if (file && file.size > maxSize) {
+          // Use Bootstrap's invalid feedback style
+          alert("Image must be less than 2MB.");
+          event.target.value = ""; // reset file input
+        }
+      });
+  </script>
 </body>
