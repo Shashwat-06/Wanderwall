@@ -101,9 +101,8 @@
         const file = event.target.files[0];
 
         if (file && file.size > maxSize) {
-          // Use Bootstrap's invalid feedback style
           alert("Image must be less than 2MB.");
-          event.target.value = ""; // reset file input
+          event.target.value = ""; // to reset input
         }
       });
   </script>
