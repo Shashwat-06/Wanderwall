@@ -1,8 +1,8 @@
 const reversedCords = listing.geometry.coordinates.reverse();
 var redIcon = L.icon({
-  iconUrl: "/js/mapmarker.svg",
+  iconUrl: "/icon.png",
 
-  iconSize: [25, 41],
+  iconSize: [35, 35],
 
   popupAnchor: [1, -34],
 });
@@ -21,7 +21,7 @@ L.marker(reversedCords, { icon: redIcon })
 
 var circle = L.circle(reversedCords, {
   color: "red",
-  fillColor: "#f03",
+  fillColor: "gray",
   fillOpacity: 0.5,
   radius: 500,
 })
